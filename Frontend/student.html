@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Student Dashboard | University Course Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand-mark"><b>U</b> Course Portal</div>
+  <div class="who"><span id="userAvatar" class="avatar"></span><span id="userName"></span><button class="btn ghost small" id="logoutBtn" style="color:#fff;border-color:#4b5a73">Log out</button></div>
+</header>
+<main class="container">
+  <div class="page-head">
+    <div><h1 id="welcome">Your dashboard</h1><p id="email"></p></div>
+  </div>
+  <section class="stats" aria-label="Summary">
+    <div><strong id="statCourses">-</strong><span>Courses available</span></div>
+    <div><strong id="statCredits">-</strong><span>Total credit hours</span></div>
+    <div><strong id="statInstructors">-</strong><span>Instructors</span></div>
+  </section>
+  <div class="toolbar">
+    <input class="input" type="search" id="search" placeholder="Search by code, title or instructor" aria-label="Search courses">
+    <select id="sort" aria-label="Sort courses">
+      <option value="code">Sort by code</option><option value="title">Sort by title</option><option value="credits">Most credit hours</option>
+    </select>
+  </div>
+  <section class="grid" id="courseGrid" aria-live="polite"></section>
+</main>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/student.js"></script>
+</body>
+</html>

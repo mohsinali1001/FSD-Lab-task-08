@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin Dashboard | University Course Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand-mark"><b>U</b> Course Portal &middot; Admin</div>
+  <div class="who"><span id="userAvatar" class="avatar"></span><span id="userName"></span><button class="btn ghost small" id="logoutBtn" style="color:#fff;border-color:#4b5a73">Log out</button></div>
+</header>
+<main class="container">
+  <div class="page-head">
+    <div><h1>Course catalogue</h1><p>Add, update and remove the courses students can see.</p></div>
+    <button class="btn" id="addBtn">Add course</button>
+  </div>
+  <section class="stats" aria-label="Summary">
+    <div><strong id="statCourses">-</strong><span>Courses</span></div>
+    <div><strong id="statCredits">-</strong><span>Total credit hours</span></div>
+    <div><strong id="statInstructors">-</strong><span>Instructors</span></div>
+  </section>
+  <div class="toolbar"><input class="input" type="search" id="search" placeholder="Search by code, title or instructor" aria-label="Search courses"></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Code</th><th>Title</th><th>Credits</th><th>Instructor</th><th></th></tr></thead>
+      <tbody id="courseBody"></tbody>
+    </table>
+  </div>
+</main>
+
+<dialog id="courseDialog">
+  <h3 id="dialogTitle">Add course</h3>
+  <div id="formMsg" class="alert err" role="alert"></div>
+  <form id="courseForm" novalidate>
+    <input type="hidden" id="courseId">
+    <div class="row">
+      <label class="field"><span>Course code</span><input class="input" id="course_code" placeholder="CS-401" maxlength="20"></label>
+      <label class="field"><span>Credit hours</span><input class="input" type="number" id="credit_hours" min="1" max="6" value="3"></label>
+    </div>
+    <label class="field"><span>Title</span><input class="input" id="title" maxlength="150"></label>
+    <label class="field"><span>Instructor</span><input class="input" id="instructor" maxlength="100"></label>
+    <label class="field"><span>Description</span><textarea id="description" rows="3"></textarea></label>
+    <div class="dialog-actions">
+      <button type="button" class="btn ghost" id="cancelBtn">Cancel</button>
+      <button type="submit" class="btn" id="saveBtn">Save course</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="deleteDialog">
+  <h3>Delete this course?</h3>
+  <p id="deleteText"></p>
+  <div class="dialog-actions">
+    <button class="btn ghost" id="deleteCancel">Keep course</button>
+    <button class="btn danger" id="deleteConfirm">Delete course</button>
+  </div>
+</dialog>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
